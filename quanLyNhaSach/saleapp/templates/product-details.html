@@ -1,0 +1,210 @@
+{%extends 'layout/base.html'%}
+
+{%block title%}  Chi tiết sản phẩm {%endblock%}
+
+{%block content%}
+
+<div class="row" style="background-color:white;">
+    <div class="col-md-6 col-12" style="display:inline-block;">
+        <img style="display:inline-block; margin-left:-10px;" src="{{products.Product.image}}"
+             class="img-fluid rounded"/>
+        <p style="margin-left:25px; font-weight:bold; color:; font-size:25px; ">
+            Chính sách ưu đãi của BookStore
+        </p>
+        <p style="margin-left:60px;">
+            <b>Thời gian giao hàng :</b>
+            Giao nhanh và uy tín
+        </p>
+        <p style="margin-left:60px;">
+            <b>Chính sách đổi trả :</b>
+            Đổi trả miễn phí toàn quốc
+        </p>
+        <p style="margin-left:60px;">
+            <b>Chính sách khách sỉ :</b>
+            Ưu đãi khi mua số lượng lớn
+        </p>
+        <p style="margin-left:60px;">
+            <b>Cam kết :</b>
+            Sản phẩm hoàn toàn chính hãng
+        </p>
+        <p style="margin-left:60px;">
+            <b> Tham gia :</b>
+            2009
+        </p>
+        <p style="margin-left:60px;">
+            <b> Tỉ lệ phản hồi :</b>
+            100%
+        </p>
+        <p style="margin-left:60px;">
+            <b> Thời gian phản hồi :</b>
+            trong vòng 10 phút
+        </p>
+        <p>
+            <b style="margin-left:60px; ">
+                <i> Châm ngôn: </i>
+            </b>
+            <i> Chất lượng, uy tín, giá rẻ</i>
+        </p>
+
+    </div>
+
+    <div style="background-color:#f4efef; display:inline-block; width:780px; height:10%; margin-left:-130px; margin-top:8px">
+
+        <div class="card-body " style="text-align:left;">
+            <img style="width:60px; height:60px;" src="https://cdn-icons-png.flaticon.com/128/791/791968.png" alt="">
+            <span style="color:#212121;font-size:23px">{{products.Product.name}}</span>
+
+            <p style="font-size:14px; color:#555555">
+                Nhà cung cấp: Bookstore <span style="margin-left:150px;"> Hình thức bìa: Bìa mềm </span>
+            </p>
+            <p style="font-size:14px; color:#555555">
+                Xuất bản: 2015 <span style="margin-left:220px;"> Tác giả: {{products.Author.name}}  </span>
+            </p>
+
+            <p style="font-size:32px; color:#C92127;">
+                {{products.Product.price|format_vnd}}đ
+
+                <span style="background-color:#C92127; color:white; margin-left:7px; padding: 2px 4px;
+                    border-radius:0.5rem; font-size:20px; font-weight: 600; ">
+                     {% if products.Product.category_id == 10 or products.Product.category_id == 16 or products.Product.category == 17 %}
+                           -20%
+                        {% elif products.Product.category_id == 2 or products.Product.category_id == 3 or products.Product.category_id == 4 or products.Product.category_id == 5 or products.Product.category_id == 6 %}
+                           -15%
+                        {% elif products.Product.category_id == 1 or products.Product.category_id == 9 or products.Product.category_id == 11 %}
+                           -12%
+                        {% else %}
+                            -9%
+                        {% endif %}
+                </span>
+                <span>
+                        <i style="margin-left:14px; font-size:20px; color:#999999 ">
+                            <del>
+                                 {% if products.Product.category_id == 10 or products.Product.category_id == 16 or products.Product.category == 17 %}
+                                    {{ (products.Product.price|float + products.Product.price|float*0.2)|int|format_vnd }}đ
+                                 {% elif products.Product.category_id == 2 or products.Product.category_id == 3 or products.Product.category_id == 4 or products.Product.category_id == 5 or products.Product.category_id == 6 %}
+                                     {{(products.Product.price|float + products.Product.price|float*0.15)|int|format_vnd }}đ
+                                 {% elif products.Product.category_id == 1 or products.Product.category_id == 9 or products.Product.category_id == 11 %}
+                                    {{(products.Product.price|float + products.Product.price|float*0.12)|int|format_vnd }}đ
+                                 {% else %}
+                                    {{ (products.Product.price|float + products.Product.price|float*0.09)|int|format_vnd }}đ
+                                 {% endif %}
+                            </del>
+                        </i>
+                </span>
+            </p>
+            <p style="font-size:17px; color:#666666;"> Đã bán: <span style="color:#444444"> 20</span></p>
+            <hr>
+            <b> Thông tin vận chuyển</b>
+            <p style="margin-top:10px;"> Trụ sở chính: Thành phố Hồ Chí Minh </p>
+            <b> Giao hàng tiêu chuẩn: </b><span> Đơn hàng sẽ xuất đi sau 2 giờ kể từ khi được đặt</span>
+
+            <a style="margin-top:10px; background-color:rgba(208, 1, 27, .08); color:#d0011b; font-size:14px;"
+
+               href="#"
+               onclick="addToCart (event, {{products.Product.id}}, '{{products.Product.name}}' , {{products.Product.price}} )"
+               class="btn btn-danger">
+
+                <img
+                        style="width:40px;height:40px; margin-left:-10px; margin-top:-10px;margin-bottom:-3px;"
+                        src="https://cdn-icons-png.flaticon.com/256/11257/11257209.png"
+                        alt=""> Thêm Vào Giỏ
+            </a>
+
+
+            <hr>
+            <p style="font-weight:bold;"> Thông tin chi tiết</p>
+            <p>Mã hàng <span style="margin-left:300px;"> {{products.Product.id}}</span></p>
+            <p> Tên Nhà Cung Cấp <span style="margin-left:220px">BookStore</span></p>
+            <p>Tác giả <span style="margin-left: 315px">{{products.Author.name}}</span></p>
+            <p> Người Dịch <span style="margin-left:285px;">Hà Vân, Lê Dũng</span></p>
+            <p> NXB <span style="margin-left:340px;"> Dân trí</span></p>
+            <p> Năm XB <span style="margin-left:310px;">2015</span></p>
+            <p> Ngôn Ngữ <span style="margin-left:295px;"> Tiếng Việt</span></p>
+            <p> Trọng lượng (gr) <span style="margin-left:245px;">200</span></p>
+            <p> Số trang <span style="margin-left:310px;">{{random_pages}}</span></p>
+            <p> Kích thướt bao bì <span style="margin-left:245px;">29.5 x 20.5 x 0.6 cm </span></p>
+        </div>
+
+    </div>
+    <hr>
+    <br>
+
+    <div class="form-group" style="background-color:white; margin-top:10px; padding:10px;">
+        <h5 style="font-weight:bold; color:red;"> Đánh giá sản phẩm</h5>
+        {%if current_user.is_authenticated %}
+        <textarea class="form-control" placeholder=" Nhập bình luận...." rows="5" id="comment"></textarea>
+
+        <input type="submit" class="btn btn-primary" value="Bình luận" style="margin-top:10px;">
+    </div>
+    {%else%}
+    <div style="display: flex; justify-content: flex-start; background-color: white; padding: 10px;">
+        <a href="{{url_for('login_my_user',next='cart')}}"
+           style="display: inline-block;
+                  padding: 10px 20px;
+                  color: #ff0000;
+                  text-decoration: none;
+                  border: 2px solid red;
+                  background-color: #ffcccc; /* Màu đỏ nhạt */
+                  font-size: 16px;
+                  border-radius: 5px;
+                  text-align: center;"
+        > Login to comment</a>
+    </div>
+    {%endif%}
+
+    <div class="row comment d-flex align-items-center" style="margin-top:10px;">
+        <div class="col-md-1 col-xs-4">
+            <img src="{{url_for('static', filename='images/default.png')}}"
+                 class="img-fluid rounded-circle" alt="demo">
+        </div>
+        <div class="col-md-11 col-xs-8">
+            <p> Sản phẩm tuyệt vời</p>
+            <p><em> 2021-12-07 12:12</em></p>
+        </div>
+    </div>
+
+
+</div>
+
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

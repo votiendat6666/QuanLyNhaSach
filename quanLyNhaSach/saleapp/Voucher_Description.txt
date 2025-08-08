@@ -1,0 +1,4 @@
+-Đối với các sach về gia đình, trẻ em, nấu ăn giảm 20% (category_id = 10, 16, 17)
+- Đối với các sách ve giao trinh, khoa hoc, tieu thuyet, van hoc,lich su giam 15% (category_id = 2,3,4,5,6)
+- Doi voi cac sach ve giai tri nhu Kinh di, tinh cam, cac truyen tranh giam 12% (category_id = 1,9,11)
+- Doi voi cac sach con lai giam 9% (Cac category_id con lai)

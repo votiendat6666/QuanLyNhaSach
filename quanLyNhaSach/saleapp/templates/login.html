@@ -1,0 +1,114 @@
+{%extends 'layout/base.html'%}
+{%block title%} Login {%endblock%}
+{%block content%}
+
+
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/011/191/113/original/light-pink-blue-blurred-and-colored-background-vector.jpg');
+width:1896px;margin-left:-300px ;height:1000px;">
+
+    <div style="padding-top:150px;">
+
+    </div>
+
+    <div style="background-color: black;width:600px; height:800px; position: absolute; margin-left: 650px; opacity:30%; border-radius:1rem; margin-top:-70px;">
+    </div>
+
+    <form method="post" action="/login "
+          style="width:900px; height:300px;padding-top:20px; margin-left:500px;  text-align:center; position: absolute; margin-top:-70px;">
+        <img style="margin-left:30px;" src="https://cdn-icons-png.flaticon.com/128/7856/7856126.png" alt="">
+        <!--            <h1  style=" color:white;	">LOGIN     </h1>-->
+        <br>
+
+
+        <div style=" margin-left:200px; width:600px " class="form-floating mb-3 mt-3 ">
+
+            <input style=";border-radius:10rem; width:500px;" type="text" class="form-control" id="username"
+                   placeholder="Nhập tài khoản" name="username"
+
+                   pattern="[A-Za-z0-9]*" required>
+            <label for="username"> Tài khoản </label>
+
+        </div>
+
+        <div style=" margin-left:200px; width:600px;" class="form-floating mt-3 mb-3;">
+            <input style=";border-radius:10rem; width:500px;" type="password" class="form-control" id="password"
+                   placeholder="Nhập mật khẩu" name="password"
+                   required>
+
+            <label style="position:absolute;" for="password">Nhập mật khẩu </label>
+
+        </div>
+        <div style="display: flex; align-items: center; margin-left: 205px;">
+            <select name="role" style="width: 25%; margin-top:20px; ; border-radius: 2rem;" class="form-select"
+                    aria-label="Default select example">
+                <option value="admin">Administration</option>
+                <option selected value="user"> Khách hàng</option>
+                <option value="staff"> Nhân viên</option>
+                <option value="manager">Manager</option>
+            </select>
+
+            <div style="margin-left: 170px; color: white; margin-top:10px;">
+                <input type="checkbox" onclick="togglePassword()"> Show Password
+            </div>
+        </div>
+
+        <script>
+            function togglePassword() {
+                var passwordField = document.getElementById("password");
+                if (passwordField.type === "password") {
+                    passwordField.type = "text";
+                } else {
+                    passwordField.type = "password";
+                }
+            }
+        </script>
+
+
+        {%if err_msg%}
+        <div class="alert alert-danger"
+             style="color:red;height:1px; margin-left:210px; margin-top:20px; width:357px; ">
+            <p style="margin-top:-13px;"> {{err_msg}}</p>
+        </div>
+        {%endif%}
+
+
+        <div class="form-floating mt-3 mb-3">
+            <button style="font-size:22px;margin-top:20px; ; width:160px;" class="btn btn-success" type="submit">Đăng
+                nhập
+            </button>
+        </div>
+
+        <div class="form-floating mt-3 mb-3">
+            <button style="font-size:22px;margin-top:20px; ; width:160px;" class="btn btn-success" type="button"
+                    onclick="window.location.href='/register'">Đăng ký
+            </button>
+        </div>
+
+
+        <div style="margin-left:-30px;">
+            <br><br>
+
+            <img style="width;40px;height:40px; margin-left:40px;"
+                 src="https://cdn-icons-png.flaticon.com/128/733/733547.png" alt="">
+            <img style="width;40px;height:40px;" src="https://cdn-icons-png.flaticon.com/128/888/888846.png" alt="">
+            <img style="width;40px;height:40px;" src="https://cdn-icons-png.flaticon.com/128/3256/3256013.png" alt="">
+            <img style="width;40px;height:40px;" src="https://cdn-icons-png.flaticon.com/128/3536/3536559.png" alt="">
+        </div>
+
+        <div>
+            <p style="margin-top:20px;color:white;"> &copy; 2024 Online Login Form. All rights reserved | Design by Tiến
+                Đạt</p>
+        </div>
+
+
+    </form>
+<!--    <span> <img style="width:30px;height:30px; margin-left:1150px; margin-top:180px; position:absolute;"-->
+<!--                src="https://cdn-icons-png.flaticon.com/128/10464/10464776.png" alt="">  </span>-->
+    <span> <img style="width:30px;height:30px; margin-left:1150px; margin-top:108px; position:absolute;"
+                src="https://cdn-icons-png.flaticon.com/128/9815/9815472.png" alt="">  </span>
+
+
+</div>
+
+
+{%endblock%}

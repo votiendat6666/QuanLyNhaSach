@@ -1,0 +1,106 @@
+{%extends 'layout/base.html'%}
+{%block title%} Giỏ hàng {%endblock%}
+
+
+{%block content%}
+
+
+<!--Thanh tiêu đề-->
+<div style=" background-color:white; height:55 px;   ">
+    <a class="navbar-brand" href="/" style="font-size:30px; color:#ee4d2d ;display:inline-block;;"> <img
+            style="width:55px; height:55px; margin-left:20px;"
+            src="https://cdn-icons-png.flaticon.com/128/5832/5832416.png"> BookStore </a>
+    <div style="width:1.5px; height:35px; background-color: #ee4d2d ; margin-bottom:-5px; display:inline-block;"></div>
+    <div style="display:inline-block; font-size:22px;color:#ee4d2d ; margin-left:15px; "> Giỏ Hàng</div>
+
+</div>
+
+<!--Tạo bảng giỏ hàng-->
+<div style="height:100%; margin-top:2px;background-color:white; color:#888888; ">
+    {%if 'cart' in session and session['cart']%}
+    <table class="table">
+        <tr style="background:">
+            <th style="text-align:center">Mã sản phẩm</th>
+            <th> Tên sản phẩm</th>
+            <th>Đơn giá</th>
+            <th style="padding-left:px;">Số lượng</th>
+
+            <th> Thành tiền</th>
+            <th></th>
+        </tr>
+
+        {% for c in session['cart'].values() %}
+        <tr id="product{{ c.id }}">
+            <td style="text-align:center"> {{ c.id }}</td>
+            <td>{{ c.name }}</td>
+            <td id="product-price-{{ c.id }}">{{ c.price|format_vnd }} <sup
+                    style="font-size:15px; margin-left:-5px;">đ</sup></td>
+
+            <td style="padding-left:px;" width="20%;">
+                <div class="form-group" >
+                    <input type="number"
+                           min="1"
+                           onblur="updateCart({{ c.id }}, this)"
+                           value="{{ c.quantity }}"
+                           style="width:40%; padding-left:px;" class="form-control" >
+                </div>
+            </td>
+
+            <td id="product-total-{{ c.id }}" style="color:#ee4d2d;">{{ (c.price * c.quantity)|int}} <sup
+                    style="font-size:15px; margin-left:px;">đ</sup></td>
+            <td>
+                <input class="btn btn-danger"
+                       value="Xóa"
+                       onclick="deleteCart({{ c.id }})"
+                       type="button">
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+ <br> <br> <br> <br> <br> <br> <br> <br>
+   <div style="display: flex; justify-content: flex-end; align-items: center; margin-right:3%;">
+    <h5 style="color: black; margin-right: 20px;">Tổng sản phẩm: <span style="color:red;" class="cart-counter">{{ stats.total_quantity }}</span></h5>
+    <h5 style="color: black;">Tổng tiền: <span style="color:red;" id="total-amount">{{ "{:,.1f}".format(stats.total_amount) }} VND</span></h5>
+</div>
+    <!--    Phần nút thanh toán-->
+    {% if current_user.is_authenticated %}
+    <div style="display: flex; justify-content: flex-end; background-color: white; padding: 10px;">
+        <button style="display: inline-block;
+          font-size:23px;  width:200px;  background-color:rgb(238, 77, 45);  color:white;
+          padding: 10px 20px;
+          text-decoration: none;
+          border: 2px solid red;
+          border-radius: 5px;
+          text-align: center;" class="btn btn-success" onclick="window.location.href='/api/pay'">Thanh toán</button>
+    </div>
+
+
+    {% else %}
+
+    <!--    Nút đăng nhập để thanh toán-->
+    <div style="display: flex; justify-content: flex-end; background-color: white; padding: 10px;">
+        <a href="{{url_for('login_my_user',next='cart')}}"
+           style="display: inline-block;
+          padding: 10px 20px;
+          color: #ff0000;
+          text-decoration: none;
+          border: 2px solid red;
+          background-color: #ffcccc; /* Màu đỏ nhạt */
+          font-size: 16px;
+          border-radius: 5px;
+          text-align: center;"
+        > Login to pay</a>
+    </div>
+
+
+    <!--    Thanh toán xong trang sẽ rỗng-->
+    {% endif %}
+    {%else%}
+    <p> Không có sản phẩm nào trong giỏ hàng</p>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    {%endif%}
+
+
+</div>
+
+{%endblock%}

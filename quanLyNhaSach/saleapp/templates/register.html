@@ -1,0 +1,88 @@
+{%extends 'layout/base.html'%}
+
+{%block title%} Đăng ký {%endblock%}
+
+{%block content%}
+
+<div style="background-image: url('https://static.vecteezy.com/system/resources/previews/011/191/113/original/light-pink-blue-blurred-and-colored-background-vector.jpg');
+width:1896px;margin-left:-300px ;height:1000px; ">
+
+<!--    {%if err_msg%}-->
+<!--    <div class="alert alert-danger">{{err_msg}}</div>-->
+<!--    {%endif%}-->
+
+    <div style="background-color:black; width:600px; height:900px; position: absolute; margin-left: 670px; margin-top:50px; opacity:30%; border-radius:1rem;">
+    </div>
+    <form method="post" action="/register" enctype="multipart/form-data"
+          style="width:450px;margin-left:750px; margin-top:150px; position: absolute; ">
+        <br>
+        <h1 style=" margin-top:-80px;margin-left:; font-family:Cursive; font-size:48px; color:white; " > Register an account </h1>
+<!--        <img style="width:20%; margin-top:-80px;margin-left:250px;" src="https://img.icons8.com/?size=80&id=492ILERveW8G&format=png" alt="">-->
+        <br>
+        <div class="form-floating mb-3 mt-3" style=" border: 1px solid white; border-radius:2rem; ">
+            <input style=" border-radius:2rem; "  type="text" class="form-control" id="name" placeholder="Nhập họ tên" name="name" required>
+            <label for="name">Họ tên</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-3" style=" border: 1px solid white; border-radius:2rem;  ">
+            <input style=" border-radius:2rem; " type="text" class="form-control" id="username" placeholder="Nhập tài khoản" name="username"
+                   pattern="[A-Za-z0-9]*" required>
+            <label for="username">Tài khoản</label>
+        </div>
+
+<!--<<<<<<< Updated upstream-->
+<!--&lt;!&ndash;<<<<<<< Updated upstream&ndash;&gt;-->
+<!--=======-->
+
+<!--&gt;>>>>>> Stashed changes-->
+        <div class="form-floating mt-3 mb-3" style=" border: 1px solid white; border-radius:2rem;  ">
+            <input style=" border-radius:2rem; " type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" name="password"
+                   required>
+            <label for="password">Mật khẩu</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3" style=" border: 1px solid white; border-radius:2rem;  ">
+            <input style=" border-radius:2rem; " type="password" class="form-control" id="confirm" placeholder="Nhập lại mật khẩu" name="confirm"
+                   required>
+            <label for="confirm">Nhập lại mật khẩu</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3" style=" border: 1px solid white; border-radius:2rem;  ">
+            <input style=" border-radius:2rem; " type="text" class="form-control" id="address" placeholder="Nhập địa chỉ" name="address" required>
+            <label for="address">Địa chỉ</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3" style=" border: 1px solid white; border-radius:2rem;  ">
+            <input style=" border-radius:2rem; " type="text" class="form-control" id="phone" placeholder="Nhập số điện thoại" name="phone" required>
+            <label for="phone">Số điện thoại</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3" style=" border: 1px solid white; border-radius:2rem;  ">
+            <input style=" border-radius:2rem; " type="email" class="form-control" id="email" placeholder="Nhập email" name="email" required>
+            <label style="opacity:100%'" for="email">Email</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3" style=" border: 1px solid white; border-radius:2rem;  ">
+            <input style=" border-radius:2rem; " type="file" class="form-control" id="avatar" name="avatar">
+            <label for="avatar">Ảnh đại diện</label>
+        </div>
+
+
+        <div class="form-floating mt-3 mb-3">
+            <button style="font-size:22px; margin-top:20px; width:450px;" class="btn btn-success" type="submit">Đăng ký</button>
+        </div>
+    </form>
+
+</div>
+<!--<<<<<<< Updated upstream-->
+<!--&lt;!&ndash;=======&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="form-floating mt-3 mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="file" class="form-control" id="avatar" name="avatar">&ndash;&gt;-->
+<!--&lt;!&ndash;        <label for="avatar">Ảnh đại diện</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;&gt;>>>>>> Stashed changes&ndash;&gt;-->
+<!--=======-->
+
+<!--&gt;>>>>>> Stashed changes-->
+
+{%endblock%}

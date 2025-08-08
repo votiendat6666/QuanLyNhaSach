@@ -1,0 +1,176 @@
+{%extends 'layout/base.html'%}
+
+{%block content%}
+
+<div style="padding:1em; border-radius:1rem;">
+
+    <!--    Hình home cuộn trang lên-->
+    <img
+            src="https://cdn-icons-png.flaticon.com/128/15527/15527317.png"
+            alt="Scroll to Top"
+            id="scrollToTop"
+            style="
+          position: fixed;
+          bottom: 300px;
+          right: 20px;
+          width: 50px;
+          height: 50px;
+          cursor: pointer;
+          transition: transform 0.3s ease;"
+            onmouseover="this.style.transform='scale(1.2)'"
+            onmouseout="this.style.transform='scale(1)'">
+
+    <script>
+        document.getElementById("scrollToTop").addEventListener("click", function() {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        });
+    </script>
+
+
+    <div class="bangon">
+        <!-- Cột lớn -->
+        <div class="coll-large">
+            <img style="width:100%; margin-left:-24px; margin-bottom:2px; margin-top:-20px; border-radius:0.5rem;"
+                 src="https://cdn0.fahasa.com/media/magentothem/banner7/Thanhtoankhongtienmat1124_trangchinh_840x320.jpg">
+
+        </div>
+
+        <!-- Cột nhỏ -->
+        <div class="coll-small">
+            <img style="width:107%;border-radius:0.55rem; margin-top:-11px; margin-left:-28px;"
+                 src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2024/VNPAYT11_392x156_1.png"
+                 alt="">
+            <!-- Dòng 1 trong cột nhỏ -->
+            <div class="roww">
+
+            </div>
+            <!-- Dòng 2 trong cột nhỏ -->
+            <div class="roww">
+                <img style="width:107%; border-radius:0.5rem; margin-left:-13px; margin-left:-28px;margin-top:12px;"
+                     src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2024/BannerSacombank_T10_392x156_07.jpg"
+                     alt="">
+            </div>
+        </div>
+    </div>
+
+
+    <img style="border-radius:0.5rem; margin-left:-15px;"
+         src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2024/TrangCTT11_1124_20_11_Resize_310X210_2.png" alt="">
+    <img style="border-radius:0.5rem; margin-left:6px;"
+         src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2024/NgoaiVan_T11_BLACKFRIDAY_310x210.jpg " alt="">
+    <img style="border-radius:0.5rem;margin-left:6px;"
+         src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2024/SmallBanner_T11_Alphabooks_smallbanner_310x210.jpg"
+         alt="">
+    <img style="border-radius:0.5rem;margin-left:6px;"
+         src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2024/TrangBlackfridayT11_ResizeSmallBanner_310x210_1.png"
+         alt="">
+</div>
+
+<div class="row" style=" width:1300px;">
+    {%for p in products%}
+    <div class="col-md-3 col-12" style="padding:0.5rem; ">
+        <div style="border-radius:1rem;" class="card">
+            <a href="/products/{{p.id}}" style="text-decoration: none; color:#333333; ">
+
+                <img style="border-radius:rem; margin-top:20px;margin-bottom:-35px; " class="card-img-top"
+                     src="{{p.image}}"
+                     alt="Card image">
+                <div class="card-body ">
+
+                    <br>
+                    <img style="width:60%;margin-bottom:1px; border-radius:0.3rem; margin-top:"
+                         src="https://img.ws.mms.shopee.vn/vn-11134210-7qukw-lh7bshlcfd9v86" alt="">
+                    <img style="width:25%;margin-bottom:px; border-radius:0.3rem; margin-top:"
+                         src="https://watermarkconsult.net/wp-content/uploads/2018/01/100-Percent.jpg" alt="">
+
+                    <br>
+                    <span style=" width:40%;background-color:#ff7337;color:white; border-radius:0.3rem;margin-top:15px;"> &ensp; Yêu thích+  </span>
+
+                    <span class="card-title ;" style="font-weight: ;font-size:15px;background-color:white;color:black;"> &ensp;{{p.name}} </span>
+                    <br>
+
+
+                    <span class="card-text" style="color:#C92127; font-weight:; font-size:16px; font-weight:bold">
+                        {{p.price|format_vnd}}đ
+                </span>
+                    <span style="background-color:#C92127; color:white; margin-left:7px; padding: 2px 4px;
+                    border-radius:0.5rem; font-size: 1em; font-weight: 600; ">
+                        {% if p.category_id == 10 or p.category_id == 16 or p.category == 17 %}
+                           -20%
+                        {% elif p.category_id == 2 or p.category_id == 3 or p.category_id == 4 or p.category_id == 5 or p.category_id == 6 %}
+                           -15%
+                        {% elif p.category_id == 1 or p.category_id == 9 or p.category_id == 11 %}
+                           -12%
+                        {% else %}
+                            -9%
+                        {% endif %}
+                    </span>
+                    <i style="margin-left:14px; font-size:14px; color:#999999 ">
+                        <del>
+                            {% if p.category_id == 10 or p.category_id == 16 or p.category == 17 %}
+                            {{ (p.price|float + p.price|float*0.2)|int|format_vnd }}đ
+                            {% elif p.category_id == 2 or p.category_id == 3 or p.category_id == 4 or p.category_id == 5
+                            or p.category_id == 6 %}
+                            {{(p.price|float + p.price|float*0.15)|int|format_vnd }}đ
+                            {% elif p.category_id == 1 or p.category_id == 9 or p.category_id == 11 %}
+                            {{(p.price|float + p.price|float*0.12)|int|format_vnd }}đ
+                            {% else %}
+                            {{ (p.price|float + p.price|float*0.09)|int|format_vnd }}đ
+                            {% endif %}
+                            </span>
+                        </del>
+                    </i>
+                    <br>
+                    <!--                    <span style=" font-size:15px; color:black;"> Đã bán: {{p.daban}}&ensp;&ensp;</span>-->
+
+                    <span style=" font-size: 10px;color: orange ;padding:2px; border: 1px solid orange; border-radius: 0.5px; text-align: center; width:70px; margin-top:-15px; ">
+                    Rẻ Vô Địch
+                    </span>
+                    <div>
+
+                    </div>
+
+                    <a style="margin-top:10px; background-color:#d1e6fc;  color:#0c3ff9; font-size:15px;" href="/products/{{p.id}}"
+                       class="btn btn-primary"> <img
+                            style="width:20px;height20px; margin-left:-10px; margin-top:-10px;margin-bottom:-7px;"
+                            src="https://cdn-icons-png.flaticon.com/128/8860/8860639.png"
+                            alt=""> View</a>
+
+                    <i class="fa-regular fa-magnifying-glass"> </i>
+
+                    <a style="margin-top:10px; background-color:rgba(208, 1, 27, .08); color:#d0011b; font-size:15px;"
+                       href="#" onclick="addToCart (event, {{p.id}}, '{{p.name}}' , {{p.price}} )"
+                       class="btn btn-danger">
+                        <img
+                                style="width:20px;height:20px; margin-left:-10px; margin-top:-10px;margin-bottom:-3px;"
+                                src="https://cdn-icons-png.flaticon.com/256/11257/11257209.png"
+                                alt=""> Thêm Vào Giỏ
+                    </a>
+                </div>
+
+            </a>
+
+        </div>
+    </div>
+    {%endfor%}
+
+    <!--    Phan trang-->
+    <ul class="pagination justify-content-center" style="font-size:20px; border-radius:2.5rem;">
+
+        <li class="page-item"><a class="page-link" href="{{ url_for('index', page=1) }}" style="color: #596161; width:80px; text-align:center;">1</a></li>
+        <li class="page-item"><a class="page-link" href="{{ url_for('index', page=2) }}" style="color: #596161; width:80px; text-align:center;">2</a></li>
+        <li class="page-item"><a class="page-link" href="{{ url_for('index', page=3) }}" style="color: #596161; width:80px; text-align:center;">3</a></li>
+        <li class="page-item"><a class="page-link" href="{{ url_for('index', page=4) }}" style="color: #596161; width:80px; text-align:center;">4</a></li>
+        <li class="page-item"><a class="page-link" href="{{ url_for('index', page=5) }}" style="color: #596161; width:80px; text-align:center;">5</a></li>
+        <li class="page-item"><a class="page-link" href="{{ url_for('index', page=6) }}" style="color: #596161; width:80px; text-align:center;">6</a></li>
+        <li class="page-item"><a class="page-link" href="{{ url_for('index', page=7) }}" style="color: #596161; width:80px; text-align:center;">7</a></li>
+
+
+    </ul>
+
+
+</div>
+{%endblock%}
